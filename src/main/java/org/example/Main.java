@@ -1,4 +1,10 @@
 package org.example;
+import org.apache.commons.lang3.StringUtils;
+import org.example.Account.*;
+
+
+import javax.swing.*;
+import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -6,12 +12,29 @@ public class Main {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        System.out.println(StringUtils.upperCase("Hello and welcome!"));
+        String end = "exit";
+Scanner in = new Scanner(System.in);
+        while (!end.equals(in.nextLine().trim())) {
+            Account first = new Account(1155, 300000);
+            first.setAnnualInterestRate(650);
+            first.withdraw(16500);
+            first.deposit(50000);
+            System.out.println("===================================================");
+            System.out.println("Номер счета : " + first.getId());
+            System.out.println("Баланс : " + first.getBalance());
+            System.out.println("Месячная ставка : " + first.getMonthlyInterest());
+            System.out.println("Дата создания : " + first.getDateCreated());
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+            System.out.println("===================================================");
+
         }
     }
+    public static boolean IsExample(int a){
+        if (a>1 && a<9)
+            return true;
+        else return false;
+    }
+
+
 }
