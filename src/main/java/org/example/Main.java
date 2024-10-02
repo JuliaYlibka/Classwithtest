@@ -31,10 +31,6 @@ public class Main {
 
         System.out.println("===================================================");
 
-
-
-        while (true) {
-
             while (true) {
                 try {
                     System.out.println("Введите ID счета: ");
@@ -76,29 +72,6 @@ public class Main {
                     in.next();
                 }
             }
-        }
+
     }
 }
-
-/*
-public static void main(String[] args) {
-      System.out.println(StringUtils.upperCase("Hello and welcome!"));
-        String end = "exit";
-Scanner in = new Scanner(System.in);
-        do{
-            Account first = new Account(1155, 300000);
-            first.setAnnualInterestRate(650);
-            first.withdraw(16500);
-            first.deposit(50000);
-            System.out.println("===================================================");
-            System.out.println("Номер счета : " + first.getId());
-            System.out.println("Баланс : " + first.getBalance());
-            System.out.println("Месячная ставка : " + first.getMonthlyInterest());
-            System.out.println("Дата создания : " + first.getDateCreated());
-
-            System.out.println("===================================================");
-
-        }
-        while (!end.equals(in.nextLine().trim()));
-    }
-*/
