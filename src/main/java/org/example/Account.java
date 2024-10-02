@@ -66,13 +66,13 @@ private Date dateCreated;
         balance+=amount;
         System.out.println("Депозит успешно введен!");
     }
-    public static Account findAccountById(List<Account> accounts, int id) {
+    public static Account findAccountById(List<Account> accounts, int id) throws IllegalArgumentException {
         for (Account account : accounts) {
             if (account.getId() == id) {
                 return account;
             }
         }
-        return null;
+        throw new IllegalArgumentException(("Счета с таким id не найден!"));
     }
     public static List<Account> getAccounts() {
         return accounts;
