@@ -6,19 +6,37 @@ import java.util.Date;
 import java.util.List;
 
 public class Account {
-private int id;
-private double balance;
-private double annualInterestRate;
-private static List<Account> accounts = new ArrayList<Account>();
-private Date dateCreated;
+    private int id;
+    private double balance;
+    private double annualInterestRate;
+    private static List<Account> accounts = new ArrayList<Account>();
+    private Date dateCreated;
+    private String name;
+    ArrayList <Transaction> transactions;
     Account(){
+        this.transactions = new ArrayList<>();
+
     }
     Account(int id, double balance){
-         this.id=id;
-         this.balance=balance;
-         accounts.add(this);
-         this.dateCreated = Date.from(Instant.now());
+        this();
 
+        this.id=id;
+        this.balance=balance;
+        this.dateCreated = Date.from(Instant.now());
+        accounts.add(this);
+        Transaction transaction = new Transaction('+',balance,balance,"Автоматическое пополнение счета при создании.");
+        transactions.add(transaction);
+
+    }
+    Account(String name, int id, double balance){
+        this();
+        this.id =id;
+        this.balance=balance;
+        this.dateCreated = Date.from(Instant.now());
+        this.name = name;
+        accounts.add(this);
+        Transaction transaction = new Transaction('+',balance,balance,"Автоматическое пополнение счета при создании.");
+        transactions.add(transaction);
     }
 
     public int getId() {
@@ -58,6 +76,8 @@ private Date dateCreated;
         if (amount <= balance) {
             balance -= amount;
             System.out.println("Сумма снята со счета!");
+            Transaction transaction = new Transaction('-',amount,balance,"Списание денежных средств.");
+            transactions.add(transaction);
         } else {
             System.out.println("Недостаточно средств на счёте.");
         }
@@ -65,6 +85,8 @@ private Date dateCreated;
     public void deposit(double amount){
         balance+=amount;
         System.out.println("Депозит успешно введен!");
+        Transaction transaction = new Transaction('+',amount,balance,"пополнение счета.");
+        transactions.add(transaction);
     }
     public static Account findAccountById(List<Account> accounts, int id) throws IllegalArgumentException {
         for (Account account : accounts) {
@@ -76,5 +98,9 @@ private Date dateCreated;
     }
     public static List<Account> getAccounts() {
         return accounts;
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
     }
 }
