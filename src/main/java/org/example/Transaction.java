@@ -18,6 +18,7 @@ public class Transaction {
         this.balance = balance;
         this.description= description;
     }
+
     @Override
     public String toString() {
         return String.format("Транзакция: %s | Сумма: %.2f | Баланс: %.2f | Описание: %s | Дата: %s",
